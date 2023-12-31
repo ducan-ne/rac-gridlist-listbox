@@ -1,8 +1,8 @@
-import { Button, ListBox, ListBoxItem, Text } from 'react-aria-components'
-import { Delete, DeleteIcon, RecycleIcon, Trash } from 'lucide-react'
+import { Button, ListBox, ListBoxItem, Text } from "react-aria-components";
+import { Delete, DeleteIcon, RecycleIcon, Trash } from "lucide-react";
 
 function ContactListExample() {
-  // optional: sử dụng `useAsyncList` để load data từ API, 1 phiên bản gọn gàng hơn của `react-query`, đọc thêm tại docs
+  // optional: sử dụng `useAsyncList` để load data từ API, 1 phiên bản gọn nhẹ hơn của `react-query`, đọc thêm tại docs
   // let list = useAsyncList<Character>({
   //   async load({ signal, cursor }) {
   //     if (cursor) {
@@ -33,20 +33,21 @@ function ContactListExample() {
         // hiển thị khi không có item nào hoặc loading
       }}
       // items={list.items} // sử dụng `useAsyncList` thì dùng `list.items`
-      items={Array.from({
-        length: 10
-      }, (_, i) => ({
-        id: i,
-        name: `Contact ${i + 1}`,
-        avatar: `https://picsum.photos/seed/${i}/64/64`,
-      } as const))}
+      items={Array.from(
+        {
+          length: 10,
+        },
+        (_, i) =>
+          ({
+            id: i,
+            name: `Contact ${i + 1}`,
+            avatar: `https://picsum.photos/seed/${i}/64/64`,
+          }) as const,
+      )}
     >
-      {(item) => <Contact
-        key={item.id}
-        item={item}
-      />}
+      {(item) => <Contact key={item.id} item={item} />}
     </ListBox>
-  )
+  );
 }
 
 function Contact({ item }) {
@@ -65,12 +66,10 @@ function Contact({ item }) {
           alt=""
           className="row-span-2 place-self-center h-8 w-8 rounded-full"
         />
-        <span
-          className="font-semibold truncate"
-        >{item.name}</span>
+        <span className="font-semibold truncate">{item.name}</span>
       </div>
     </ListBoxItem>
-  )
+  );
 }
 
-export default ContactListExample
+export default ContactListExample;
